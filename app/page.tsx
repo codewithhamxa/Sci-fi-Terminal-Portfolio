@@ -5,7 +5,7 @@ import { motion } from 'motion/react';
 import { Terminal as TerminalWindow } from '@/components/ui/terminal';
 
 // ... (in the imports section)
-import { Terminal, Code2, Cpu, Globe, Mail, Github, Linkedin, ExternalLink, ChevronRight } from 'lucide-react';
+import { Terminal, Code2, Cpu, Globe, Mail, Github, Linkedin, ExternalLink, ChevronRight, GraduationCap, Award, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -15,6 +15,8 @@ import { StatCard } from '@/components/ui/stat-card';
 import { NodeGraph } from '@/components/ui/node-graph';
 import { StatusGrid } from '@/components/ui/status-grid';
 import { Kbd } from '@/components/ui/kbd';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 const TypewriterText = ({ text, delay = 0, onComplete }: { text: string, delay?: number, onComplete?: () => void }) => {
   const [displayedText, setDisplayedText] = useState('');
@@ -199,6 +201,35 @@ export default function Portfolio() {
                   </div>
                 </div>
               </TerminalWindow>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Send className="w-5 h-5" /> COMMUNICATION_LINK
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <form action="https://formsubmit.co/code.with.hamxa@gmail.com" method="POST" className="space-y-4">
+                    <input type="hidden" name="_subject" value="New Contact from Portfolio!" />
+                    <input type="hidden" name="_captcha" value="false" />
+                    <div className="space-y-2">
+                      <label className="text-xs uppercase tracking-widest text-primary">Name</label>
+                      <Input name="name" required placeholder="ENTER_NAME" />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-xs uppercase tracking-widest text-primary">Email</label>
+                      <Input type="email" name="email" required placeholder="ENTER_EMAIL" />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-xs uppercase tracking-widest text-primary">Message</label>
+                      <Textarea name="message" required placeholder="ENTER_MESSAGE" className="min-h-[120px]" />
+                    </div>
+                    <Button type="submit" className="w-full gap-2">
+                      <Mail className="w-4 h-4" /> TRANSMIT_MESSAGE
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
             </div>
 
             {/* Right Column: Experience & Projects */}
@@ -246,14 +277,50 @@ export default function Portfolio() {
                 <div className="space-y-6">
                   <div className="relative pl-6 border-l border-primary/30 before:absolute before:left-[-5px] before:top-1.5 before:w-2.5 before:h-2.5 before:bg-primary before:notch-br">
                     <h4 className="text-lg font-bold text-primary">Senior Frontend Developer</h4>
-                    <p className="text-sm text-muted-foreground mb-2">Tech Corp // 2023 - PRESENT</p>
+                    <p className="text-sm text-muted-foreground mb-2">Tech Corp <span className="opacity-50">|</span> 2023 - PRESENT</p>
                     <p className="text-sm text-primary/80">Led the frontend team in migrating legacy applications to modern React architecture. Improved performance metrics by 40%.</p>
                   </div>
                   <div className="relative pl-6 border-l border-primary/30 before:absolute before:left-[-5px] before:top-1.5 before:w-2.5 before:h-2.5 before:bg-primary before:notch-br">
                     <h4 className="text-lg font-bold text-primary">React Developer</h4>
-                    <p className="text-sm text-muted-foreground mb-2">Web Solutions Inc // 2021 - 2023</p>
+                    <p className="text-sm text-muted-foreground mb-2">Web Solutions Inc <span className="opacity-50">|</span> 2021 - 2023</p>
                     <p className="text-sm text-primary/80">Developed responsive and accessible user interfaces for various client projects using React and Tailwind CSS.</p>
                   </div>
+                </div>
+              </section>
+
+              <section>
+                <h3 className="text-xl font-bold mb-4 flex items-center gap-2 uppercase tracking-widest text-primary border-b border-primary/30 pb-2">
+                  <GraduationCap className="w-5 h-5" /> EDUCATION
+                </h3>
+                <div className="space-y-6">
+                  <div className="relative pl-6 border-l border-primary/30 before:absolute before:left-[-5px] before:top-1.5 before:w-2.5 before:h-2.5 before:bg-primary before:notch-br">
+                    <h4 className="text-lg font-bold text-primary">Bachelor of Science in Computer Science</h4>
+                    <p className="text-sm text-muted-foreground mb-2">Cholistan University of Veterinary and Animal Sciences, Bahawalpur <span className="opacity-50">|</span> 09/2020 - 06/2024</p>
+                    <p className="text-sm text-primary/80">CGPA: 3.54</p>
+                  </div>
+                </div>
+              </section>
+
+              <section>
+                <h3 className="text-xl font-bold mb-4 flex items-center gap-2 uppercase tracking-widest text-primary border-b border-primary/30 pb-2">
+                  <Award className="w-5 h-5" /> CERTIFICATIONS
+                </h3>
+                <div className="space-y-4">
+                  {[
+                    { title: 'Full-Stack Engineer Career Path', issuer: 'Codecademy', year: '2025' },
+                    { title: 'META Front-End Developer Specialization', issuer: 'Coursera', year: '2023' },
+                    { title: 'Career Essentials in Software Development', issuer: 'Microsoft and LinkedIn', year: '2023' }
+                  ].map((cert, i) => (
+                    <div key={i} className="flex flex-col sm:flex-row sm:items-center justify-between p-3 border border-primary/30 bg-primary/5 notch-br gap-4">
+                      <div>
+                        <h4 className="font-bold text-primary">{cert.title}</h4>
+                        <p className="text-xs text-muted-foreground">{cert.issuer} <span className="opacity-50">|</span> {cert.year}</p>
+                      </div>
+                      <Button variant="outline" size="sm" className="shrink-0 text-xs h-8">
+                        SHOW_CREDENTIAL
+                      </Button>
+                    </div>
+                  ))}
                 </div>
               </section>
             </div>
