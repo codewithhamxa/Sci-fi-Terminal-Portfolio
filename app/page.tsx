@@ -247,23 +247,69 @@ export default function Portfolio() {
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
-                    { title: 'E-Commerce Platform', desc: 'A full-stack e-commerce solution with Next.js, Stripe, and Tailwind.', tech: ['Next.js', 'Stripe', 'Tailwind'] },
-                    { title: 'AI Dashboard', desc: 'Real-time analytics dashboard with interactive charts and AI insights.', tech: ['React', 'Recharts', 'OpenAI'] },
-                    { title: 'Portfolio V1', desc: 'Previous iteration of personal portfolio with smooth scrolling.', tech: ['React', 'Framer Motion'] },
-                    { title: 'Task Manager', desc: 'Kanban style task management app with drag and drop.', tech: ['React', 'Redux', 'DnD'] }
+                    { 
+                      title: 'CourseSity LMS', 
+                      desc: 'Scalable LMS with Redis caching, secure video delivery, and role-based access control.', 
+                      tech: ['Next.js', 'TypeScript', 'MERN', 'Redis'],
+                      link: null
+                    },
+                    { 
+                      title: 'Zentry-Inspired', 
+                      desc: 'Fully responsive web application with sleek UI and smooth GSAP animations.', 
+                      tech: ['React', 'Tailwind CSS', 'GSAP'],
+                      link: 'https://zentry-inspired.netlify.app/'
+                    },
+                    { 
+                      title: 'BrandVerse', 
+                      desc: 'Modern marketing agency website with interactive UI elements and dynamic content rendering.', 
+                      tech: ['React', 'TypeScript', 'Tailwind'],
+                      link: 'https://brand-verse.netlify.app/'
+                    },
+                    { 
+                      title: 'UniVerse', 
+                      desc: 'Customizable social media platform with dynamic theme, font, and background adjustments.', 
+                      tech: ['HTML', 'CSS', 'JavaScript'],
+                      link: 'https://codewithhamxa.github.io/UniVerse-social/'
+                    },
+                    { 
+                      title: 'CryptoPulse', 
+                      desc: 'Real-time cryptocurrency tracker with search functionality and dynamic price trend visualization.', 
+                      tech: ['React', 'Crypto API', 'Google Charts'],
+                      link: 'https://kryptopulse.netlify.app/'
+                    },
+                    { 
+                      title: 'Little Lemon', 
+                      desc: 'Responsive table reservation system optimized with Framer Motion animations (META Capstone).', 
+                      tech: ['React', 'Framer Motion'],
+                      link: 'https://littlelemontablereservation.netlify.app/'
+                    },
+                    { 
+                      title: 'EstateEase', 
+                      desc: 'Real estate landing page showcasing modern UI/UX with smooth scrolling and lazy loading.', 
+                      tech: ['React', 'Tailwind CSS'],
+                      link: 'https://realestateease.netlify.app/'
+                    }
                   ].map((project, i) => (
-                    <Card key={i} className="group hover:bg-primary/5 transition-colors">
+                    <Card key={i} className="group hover:bg-primary/5 transition-colors flex flex-col">
                       <CardHeader>
                         <CardTitle className="text-lg">{project.title}</CardTitle>
                         <CardDescription>{project.desc}</CardDescription>
                       </CardHeader>
-                      <CardContent>
+                      <CardContent className="flex-1 flex flex-col justify-end">
                         <div className="flex flex-wrap gap-2 mb-4">
                           {project.tech.map(t => <Badge key={t} variant="secondary" className="text-[10px]">{t}</Badge>)}
                         </div>
-                        <Button variant="ghost" size="sm" className="w-full justify-between group-hover:bg-primary group-hover:text-primary-foreground">
-                          VIEW_SOURCE <ExternalLink className="w-4 h-4" />
-                        </Button>
+                        {project.link ? (
+                          <Button variant="ghost" size="sm" className="w-full justify-between group-hover:bg-primary group-hover:text-primary-foreground" asChild>
+                            <a href={project.link} target="_blank" rel="noopener noreferrer">
+                              LIVE_DEMO <ExternalLink className="w-4 h-4" />
+                            </a>
+                          </Button>
+                        ) : (
+                          <Button variant="ghost" size="sm" className="w-full justify-between opacity-50 cursor-not-allowed" disabled>
+                            OFFLINE_ARCHIVE <ExternalLink className="w-4 h-4" />
+                          </Button>
+                        )}
                       </CardContent>
                     </Card>
                   ))}
