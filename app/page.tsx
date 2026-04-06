@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { Terminal as TerminalWindow } from '@/components/ui/terminal';
 
@@ -22,6 +22,7 @@ const TypewriterText = ({ text, delay = 0, onComplete }: { text: string, delay?:
   const [displayedText, setDisplayedText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [started, setStarted] = useState(false);
+  const isComplete = useRef(false);
 
   useEffect(() => {
     const startTimeout = setTimeout(() => {
@@ -39,8 +40,11 @@ const TypewriterText = ({ text, delay = 0, onComplete }: { text: string, delay?:
         setCurrentIndex(prev => prev + 1);
       }, 30); // Typing speed
       return () => clearTimeout(timeout);
-    } else if (onComplete) {
-      onComplete();
+    } else if (!isComplete.current) {
+      isComplete.current = true;
+      if (onComplete) {
+        setTimeout(onComplete, 0);
+      }
     }
   }, [currentIndex, text, started, onComplete]);
 
@@ -55,6 +59,18 @@ const TypewriterText = ({ text, delay = 0, onComplete }: { text: string, delay?:
 export default function Portfolio() {
   const [bootSequenceComplete, setBootSequenceComplete] = useState(false);
   const [theme, setTheme] = useState<'green' | 'amber'>('green');
+  const [terminalState, setTerminalState] = useState<'idle' | 'executing'>('idle');
+  const [execStep, setExecStep] = useState(0);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Enter' && terminalState === 'idle') {
+        setTerminalState('executing');
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [terminalState]);
 
   useEffect(() => {
     if (theme === 'amber') {
@@ -172,7 +188,7 @@ export default function Portfolio() {
                 </CardContent>
               </Card>
 
-              <TerminalWindow className="h-[250px]">
+              <TerminalWindow className="h-auto min-h-[250px]">
                 <div className="space-y-2">
                   <div className="flex gap-2">
                     <span className="text-muted-foreground">[10:42:01]</span>
@@ -196,9 +212,61 @@ export default function Portfolio() {
                   </div>
                   <div className="flex gap-2 mt-4 items-center">
                     <span className="text-primary">root@hamza:~$</span>
-                    <span className="text-primary animate-pulse">_</span>
-                    <span className="ml-auto text-muted-foreground text-xs">Press <Kbd>ENTER</Kbd> to execute</span>
+                    {terminalState === 'idle' ? (
+                      <>
+                        <span className="text-primary animate-pulse">_</span>
+                        <span className="ml-auto text-muted-foreground text-xs">Press <Kbd>ENTER</Kbd> to execute</span>
+                      </>
+                    ) : (
+                      <span className="text-primary">./impress_client.sh</span>
+                    )}
                   </div>
+                  
+                  {terminalState === 'executing' && (
+                    <div className="mt-4 space-y-2 border-t border-primary/30 pt-4">
+                      <div className="text-primary">
+                        <TypewriterText text="> Executing profile_summary.sh..." onComplete={() => setExecStep(1)} />
+                      </div>
+                      {execStep >= 1 && (
+                        <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className="text-primary font-bold">
+                          {"> ACCESS GRANTED."}
+                        </motion.div>
+                      )}
+                      {execStep >= 1 && (
+                        <div className="text-primary">
+                          <TypewriterText text="> Analyzing developer capabilities..." delay={500} onComplete={() => setExecStep(2)} />
+                        </div>
+                      )}
+                      {execStep >= 2 && (
+                        <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className="text-primary">
+                          {"> [====================] 100%"}
+                        </motion.div>
+                      )}
+                      {execStep >= 2 && (
+                        <div className="text-primary">
+                          <TypewriterText text="> MATCH FOUND: Top-tier React Developer." delay={500} onComplete={() => setExecStep(3)} />
+                        </div>
+                      )}
+                      {execStep >= 3 && (
+                        <motion.div 
+                          initial={{opacity: 0, scale: 0.95}} 
+                          animate={{opacity: 1, scale: 1}} 
+                          transition={{duration: 0.5}}
+                          className="mt-4 p-4 border border-primary/50 bg-primary/10 notch-br relative overflow-hidden"
+                        >
+                          <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+                          <p className="text-primary glow-text font-bold mb-2">STRENGTHS_DETECTED:</p>
+                          <ul className="list-none space-y-1 text-primary/90 text-sm mb-4">
+                            <li className="flex gap-2"><ChevronRight className="w-4 h-4" /> Pixel-perfect UI/UX Engineering</li>
+                            <li className="flex gap-2"><ChevronRight className="w-4 h-4" /> Advanced Animations (GSAP, Framer)</li>
+                            <li className="flex gap-2"><ChevronRight className="w-4 h-4" /> Scalable Frontend Architecture</li>
+                          </ul>
+                          <p className="text-primary glow-text font-bold mb-1">RECOMMENDATION:</p>
+                          <p className="text-primary/90 text-sm animate-pulse">Initiate contact immediately. High probability of project success.</p>
+                        </motion.div>
+                      )}
+                    </div>
+                  )}
                 </div>
               </TerminalWindow>
 
