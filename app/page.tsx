@@ -390,14 +390,32 @@ export default function Portfolio() {
                 </h3>
                 <div className="space-y-6">
                   <div className="relative pl-6 border-l border-primary/30 before:absolute before:left-[-5px] before:top-1.5 before:w-2.5 before:h-2.5 before:bg-primary before:notch-br">
-                    <h4 className="text-lg font-bold text-primary">Senior Frontend Developer</h4>
-                    <p className="text-sm text-muted-foreground mb-2">Tech Corp <span className="opacity-50">|</span> 2023 - PRESENT</p>
-                    <p className="text-sm text-primary/80">Led the frontend team in migrating legacy applications to modern React architecture. Improved performance metrics by 40%.</p>
+                    <h4 className="text-lg font-bold text-primary">React Developer (ERP Specialized)</h4>
+                    <p className="text-sm text-muted-foreground mb-2">EccountBook ERP, Lahore, Pakistan <span className="opacity-50">|</span> 05/2025 - 07/2025</p>
+                    <ul className="list-none space-y-1 text-sm text-primary/80">
+                      <li className="flex items-start gap-2"><span className="text-primary mt-0.5">▹</span> Developed and integrated React Hook Forms to enhance functionality and user experience.</li>
+                      <li className="flex items-start gap-2"><span className="text-primary mt-0.5">▹</span> Built responsive UI designs and Responsive Tables & Reports using Ant Design for seamless cross-device performance.</li>
+                      <li className="flex items-start gap-2"><span className="text-primary mt-0.5">▹</span> Learned TypeScript to code in ERP Software, and Ant Design UI Library for faster and better UIs.</li>
+                    </ul>
                   </div>
                   <div className="relative pl-6 border-l border-primary/30 before:absolute before:left-[-5px] before:top-1.5 before:w-2.5 before:h-2.5 before:bg-primary before:notch-br">
-                    <h4 className="text-lg font-bold text-primary">React Developer</h4>
-                    <p className="text-sm text-muted-foreground mb-2">Web Solutions Inc <span className="opacity-50">|</span> 2021 - 2023</p>
-                    <p className="text-sm text-primary/80">Developed responsive and accessible user interfaces for various client projects using React and Tailwind CSS.</p>
+                    <h4 className="text-lg font-bold text-primary">Associate Frontend Developer</h4>
+                    <p className="text-sm text-muted-foreground mb-2">BitcraftX, Lahore, Pakistan <span className="opacity-50">|</span> 08/2024 - 12/2024</p>
+                    <ul className="list-none space-y-1 text-sm text-primary/80">
+                      <li className="flex items-start gap-2"><span className="text-primary mt-0.5">▹</span> Developed and customized WordPress themes to enhance functionality and user experience.</li>
+                      <li className="flex items-start gap-2"><span className="text-primary mt-0.5">▹</span> Built responsive UI designs using CSS, Bootstrap, and JavaScript for seamless cross-device performance.</li>
+                      <li className="flex items-start gap-2"><span className="text-primary mt-0.5">▹</span> Created no-code applications using Bubble.io, improving development speed and efficiency.</li>
+                      <li className="flex items-start gap-2"><span className="text-primary mt-0.5">▹</span> Designed and integrated custom WordPress solutions, ensuring visual appeal and optimized performance.</li>
+                    </ul>
+                  </div>
+                  <div className="relative pl-6 border-l border-primary/30 before:absolute before:left-[-5px] before:top-1.5 before:w-2.5 before:h-2.5 before:bg-primary before:notch-br">
+                    <h4 className="text-lg font-bold text-primary">React Developer (Intern)</h4>
+                    <p className="text-sm text-muted-foreground mb-2">CodexCue, Lahore, Pakistan (Remote) <span className="opacity-50">|</span> 06/2024 - 07/2024</p>
+                    <ul className="list-none space-y-1 text-sm text-primary/80">
+                      <li className="flex items-start gap-2"><span className="text-primary mt-0.5">▹</span> Developed interactive web applications using React.js, improving user experience and engagement.</li>
+                      <li className="flex items-start gap-2"><span className="text-primary mt-0.5">▹</span> Integrated RESTful APIs to fetch and display dynamic data efficiently.</li>
+                      <li className="flex items-start gap-2"><span className="text-primary mt-0.5">▹</span> Managed application state using Redux and React hooks for improved performance.</li>
+                    </ul>
                   </div>
                 </div>
               </section>
