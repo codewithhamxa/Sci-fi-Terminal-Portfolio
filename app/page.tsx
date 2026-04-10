@@ -6,6 +6,8 @@ import { Terminal as TerminalWindow } from '@/components/ui/terminal';
 
 // ... (in the imports section)
 import { Terminal, Code2, Cpu, Globe, Mail, Github, Linkedin, ExternalLink, ChevronRight, GraduationCap, Award, Send } from 'lucide-react';
+import { FaReact, FaNodeJs } from 'react-icons/fa';
+import { SiNextdotjs, SiTypescript, SiTailwindcss, SiFramer } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -169,22 +171,48 @@ export default function Portfolio() {
                     <Cpu className="w-5 h-5" /> CORE_SKILLS
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="flex flex-col gap-4">
-                  {[
-                    { name: 'React.js / Next.js', value: 95 },
-                    { name: 'TypeScript', value: 90 },
-                    { name: 'Tailwind CSS', value: 95 },
-                    { name: 'Framer Motion', value: 85 },
-                    { name: 'Node.js', value: 75 },
-                  ].map(skill => (
-                    <div key={skill.name} className="space-y-1">
-                      <div className="flex justify-between text-xs">
-                        <span className="uppercase tracking-widest">{skill.name}</span>
-                        <span className="text-primary/80">{skill.value}%</span>
+                <CardContent className="flex flex-col gap-6">
+                  {/* Animated Tech Icons */}
+                  <div className="grid grid-cols-3 gap-3">
+                    {[
+                      { icon: FaReact, name: 'React' },
+                      { icon: SiNextdotjs, name: 'Next.js' },
+                      { icon: SiTypescript, name: 'TypeScript' },
+                      { icon: SiTailwindcss, name: 'Tailwind' },
+                      { icon: FaNodeJs, name: 'Node.js' },
+                      { icon: SiFramer, name: 'Framer' },
+                    ].map((tech, i) => (
+                      <motion.div
+                        key={tech.name}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.8 + i * 0.1, duration: 0.4, type: "spring" }}
+                        whileHover={{ scale: 1.15, rotate: 5 }}
+                        className="flex flex-col items-center justify-center gap-2 p-3 border border-primary/20 bg-primary/5 notch-br hover:bg-primary/20 hover:border-primary/50 transition-all cursor-pointer group"
+                      >
+                        <tech.icon className="w-6 h-6 text-primary/70 group-hover:text-primary group-hover:glow-text transition-all" />
+                        <span className="text-[9px] uppercase tracking-widest text-muted-foreground group-hover:text-primary transition-colors">{tech.name}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-col gap-4">
+                    {[
+                      { name: 'React.js / Next.js', value: 95 },
+                      { name: 'TypeScript', value: 90 },
+                      { name: 'Tailwind CSS', value: 95 },
+                      { name: 'Framer Motion', value: 85 },
+                      { name: 'Node.js', value: 75 },
+                    ].map(skill => (
+                      <div key={skill.name} className="space-y-1">
+                        <div className="flex justify-between text-xs">
+                          <span className="uppercase tracking-widest">{skill.name}</span>
+                          <span className="text-primary/80">{skill.value}%</span>
+                        </div>
+                        <Progress value={skill.value} />
                       </div>
-                      <Progress value={skill.value} />
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </CardContent>
               </Card>
 
