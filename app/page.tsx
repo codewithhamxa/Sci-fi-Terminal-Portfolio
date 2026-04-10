@@ -5,9 +5,11 @@ import { motion } from 'motion/react';
 import { Terminal as TerminalWindow } from '@/components/ui/terminal';
 
 // ... (in the imports section)
-import { Terminal, Code2, Cpu, Globe, Mail, Github, Linkedin, ExternalLink, ChevronRight, GraduationCap, Award, Send } from 'lucide-react';
+import { Terminal, Code2, Cpu, Globe, Mail, Github, FilePenLine, ExternalLink, ChevronRight, GraduationCap, Award, Send } from 'lucide-react';
 import { FaReact, FaNodeJs } from 'react-icons/fa';
-import { SiNextdotjs, SiTypescript, SiTailwindcss, SiFramer } from 'react-icons/si';
+import { SiNextdotjs, SiTypescript, SiTailwindcss, SiFramer, SiJavascript, SiGsap } from 'react-icons/si';
+import { TbBrandThreejs } from "react-icons/tb";
+import { PiCertificateThin } from "react-icons/pi";
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -137,13 +139,13 @@ export default function Portfolio() {
                       <Mail className="w-4 h-4" /> CONTACT_ME
                     </Button>
                     <Button variant="outline" className="gap-2" asChild>
-                      <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                      <a href="https://github.com/codewithhamxa" target="_blank" rel="noopener noreferrer">
                         <Github className="w-4 h-4" /> GITHUB
                       </a>
                     </Button>
                     <Button variant="outline" className="gap-2" asChild>
-                      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-                        <Linkedin className="w-4 h-4" /> LINKEDIN
+                      <a href="https://codewithhamza.substack.com/" target="_blank" rel="noopener noreferrer">
+                        <FilePenLine className="w-4 h-4" /> SUBSTACK
                       </a>
                     </Button>
                   </div>
@@ -177,10 +179,13 @@ export default function Portfolio() {
                     {[
                       { icon: FaReact, name: 'React' },
                       { icon: SiNextdotjs, name: 'Next.js' },
+                      { icon: SiJavascript, name: 'JavaScript' },
                       { icon: SiTypescript, name: 'TypeScript' },
                       { icon: SiTailwindcss, name: 'Tailwind' },
                       { icon: FaNodeJs, name: 'Node.js' },
                       { icon: SiFramer, name: 'Framer' },
+                      { icon: TbBrandThreejs, name: 'Three.js' },
+                      { icon: SiGsap, name: 'GSAP' },
                     ].map((tech, i) => (
                       <motion.div
                         key={tech.name}
@@ -199,10 +204,12 @@ export default function Portfolio() {
                   <div className="flex flex-col gap-4">
                     {[
                       { name: 'React.js / Next.js', value: 95 },
+                      { name: 'JavaScript', value: 95 },
                       { name: 'TypeScript', value: 90 },
                       { name: 'Tailwind CSS', value: 95 },
-                      { name: 'Framer Motion', value: 85 },
-                      { name: 'Node.js', value: 75 },
+                      { name: 'Node.js', value: 85 },
+                      { name: 'Framer Motion', value: 90 },
+                      { name: 'GSAP & Three.js', value: 85 },
                     ].map(skill => (
                       <div key={skill.name} className="space-y-1">
                         <div className="flex justify-between text-xs">
@@ -249,14 +256,14 @@ export default function Portfolio() {
                       <span className="text-primary">./impress_client.sh</span>
                     )}
                   </div>
-                  
+
                   {terminalState === 'executing' && (
                     <div className="mt-4 space-y-2 border-t border-primary/30 pt-4">
                       <div className="text-primary">
                         <TypewriterText text="> Executing profile_summary.sh..." onComplete={() => setExecStep(1)} />
                       </div>
                       {execStep >= 1 && (
-                        <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className="text-primary font-bold">
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-primary font-bold">
                           {"> ACCESS GRANTED."}
                         </motion.div>
                       )}
@@ -266,7 +273,7 @@ export default function Portfolio() {
                         </div>
                       )}
                       {execStep >= 2 && (
-                        <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className="text-primary">
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-primary">
                           {"> [====================] 100%"}
                         </motion.div>
                       )}
@@ -276,10 +283,10 @@ export default function Portfolio() {
                         </div>
                       )}
                       {execStep >= 3 && (
-                        <motion.div 
-                          initial={{opacity: 0, scale: 0.95}} 
-                          animate={{opacity: 1, scale: 1}} 
-                          transition={{duration: 0.5}}
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.5 }}
                           className="mt-4 p-4 border border-primary/50 bg-primary/10 notch-br relative overflow-hidden"
                         >
                           <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
@@ -343,45 +350,45 @@ export default function Portfolio() {
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
-                    { 
-                      title: 'CourseSity LMS', 
-                      desc: 'Scalable LMS with Redis caching, secure video delivery, and role-based access control.', 
+                    {
+                      title: 'CourseSity LMS',
+                      desc: 'Scalable LMS with Redis caching, secure video delivery, and role-based access control.',
                       tech: ['Next.js', 'TypeScript', 'MERN', 'Redis'],
                       link: null
                     },
-                    { 
-                      title: 'Zentry-Inspired', 
-                      desc: 'Fully responsive web application with sleek UI and smooth GSAP animations.', 
+                    {
+                      title: 'Zentry-Inspired',
+                      desc: 'Fully responsive web application with sleek UI and smooth GSAP animations.',
                       tech: ['React', 'Tailwind CSS', 'GSAP'],
                       link: 'https://zentry-inspired.netlify.app/'
                     },
-                    { 
-                      title: 'BrandVerse', 
-                      desc: 'Modern marketing agency website with interactive UI elements and dynamic content rendering.', 
+                    {
+                      title: 'BrandVerse',
+                      desc: 'Modern marketing agency website with interactive UI elements and dynamic content rendering.',
                       tech: ['React', 'TypeScript', 'Tailwind'],
                       link: 'https://brand-verse.netlify.app/'
                     },
-                    { 
-                      title: 'UniVerse', 
-                      desc: 'Customizable social media platform with dynamic theme, font, and background adjustments.', 
+                    {
+                      title: 'UniVerse',
+                      desc: 'Customizable social media platform with dynamic theme, font, and background adjustments.',
                       tech: ['HTML', 'CSS', 'JavaScript'],
                       link: 'https://codewithhamxa.github.io/UniVerse-social/'
                     },
-                    { 
-                      title: 'CryptoPulse', 
-                      desc: 'Real-time cryptocurrency tracker with search functionality and dynamic price trend visualization.', 
+                    {
+                      title: 'CryptoPulse',
+                      desc: 'Real-time cryptocurrency tracker with search functionality and dynamic price trend visualization.',
                       tech: ['React', 'Crypto API', 'Google Charts'],
                       link: 'https://kryptopulse.netlify.app/'
                     },
-                    { 
-                      title: 'Little Lemon', 
-                      desc: 'Responsive table reservation system optimized with Framer Motion animations (META Capstone).', 
+                    {
+                      title: 'Little Lemon',
+                      desc: 'Responsive table reservation system optimized with Framer Motion animations (META Capstone).',
                       tech: ['React', 'Framer Motion'],
                       link: 'https://littlelemontablereservation.netlify.app/'
                     },
-                    { 
-                      title: 'EstateEase', 
-                      desc: 'Real estate landing page showcasing modern UI/UX with smooth scrolling and lazy loading.', 
+                    {
+                      title: 'EstateEase',
+                      desc: 'Real estate landing page showcasing modern UI/UX with smooth scrolling and lazy loading.',
                       tech: ['React', 'Tailwind CSS'],
                       link: 'https://realestateease.netlify.app/'
                     }
@@ -467,9 +474,9 @@ export default function Portfolio() {
                 </h3>
                 <div className="space-y-4">
                   {[
-                    { title: 'Full-Stack Engineer Career Path', issuer: 'Codecademy', year: '2025' },
-                    { title: 'META Front-End Developer Specialization', issuer: 'Coursera', year: '2023' },
-                    { title: 'Career Essentials in Software Development', issuer: 'Microsoft and LinkedIn', year: '2023' }
+                    { title: 'Full-Stack Engineer Career Path', issuer: 'Codecademy', year: '2025', credential: 'https://www.codecademy.com/profiles/code._.withHamza/certificates/ffd0f42cce1a44e9a0108b365047a0a6' },
+                    { title: 'META Front-End Developer Specialization', issuer: 'Coursera', year: '2023', credential: 'https://www.coursera.org/account/accomplishments/specialization/KANL3YDQ2S9S' },
+                    { title: 'Career Essentials in Software Development', issuer: 'Microsoft and LinkedIn', year: '2023', credential: 'https://www.linkedin.com/learning/certificates/3f36d276054fe0f807c729b0f68bbb6ca01d6cb5fb4ea88989d42ca1a1d73489?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3Bop8yaCVnR3y4ftRZ0Ftj%2Fg%3D%3D' }
                   ].map((cert, i) => (
                     <div key={i} className="flex flex-col sm:flex-row sm:items-center justify-between p-3 border border-primary/30 bg-primary/5 notch-br gap-4">
                       <div>
@@ -477,7 +484,15 @@ export default function Portfolio() {
                         <p className="text-xs text-muted-foreground">{cert.issuer} <span className="opacity-50">|</span> {cert.year}</p>
                       </div>
                       <Button variant="outline" size="sm" className="shrink-0 text-xs h-8">
-                        SHOW_CREDENTIAL
+                        <a
+                          href={cert.credential}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1.5"
+                        >
+                          <PiCertificateThin size={20} />
+                          <span>VIEW_CERTIFICATE</span>
+                        </a>
                       </Button>
                     </div>
                   ))}
